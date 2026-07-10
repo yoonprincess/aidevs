@@ -28,7 +28,7 @@ print("입력한 숫자:", number)
 if number < 0:
     print("0보다 작은 수입니다.")
     print("프로그램을 종료합니다.")
-    sys.exit()
+    sys.exit()  # 종료
 
 # 위 if 조건이 참이면 sys.exit()에서 프로그램이 끝납니다.
 # 따라서 아래 코드는 number가 0 이상일 때만 실행됩니다.
