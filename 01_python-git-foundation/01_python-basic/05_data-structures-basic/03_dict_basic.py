@@ -12,7 +12,12 @@ dict 형태로 자주 다룹니다.
 """
 
 # 중괄호 { }를 사용해 dict를 만듭니다.
-student = {
+# JSON(JavaScript Object Notation)과 모양이 비슷
+# dict는 파이썬 backend에서 JSON 데이터를 다룰 때 자주 사용
+# JSON은 Frontend와 Backend 사이에서 데이터를 주고받을 때 사용하는 데이터 형식
+# student = {
+# student : dict[str, object] = {
+student: dict[str, str | int | bool] = {
     "name": "Jean",
     "score": 95,
     "passed": True,
@@ -22,8 +27,8 @@ print("학생 정보:", student)
 print("자료형:", type(student))
 
 # dict는 key를 사용해 값을 꺼냅니다.
-print("이름:", student["name"])
-print("점수:", student["score"])
+print("이름(name):", student["name"])
+print("점수(score):", student["score"])
 
 # 새로운 key와 value를 추가할 수 있습니다.
 student["course"] = "Python Basic"
@@ -35,6 +40,7 @@ print("점수 수정 후:", student)
 
 # get()은 key가 없을 때 오류 대신 기본값을 사용할 수 있게 해 줍니다.
 email = student.get("email", "이메일 없음")
+# email = student.get("email")    # None
 print("이메일:", email)
 
 print("\n[dict 전체 출력]")

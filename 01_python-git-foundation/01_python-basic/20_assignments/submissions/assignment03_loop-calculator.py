@@ -50,6 +50,7 @@ while True:
     if not num.isdigit():
         print("숫자가 아닙니다. 프로그램을 종료합니다.")
         break
+    
     # 두 번째 숫자
     num2 = input("두 번째 숫자를 입력하세요: ")
 

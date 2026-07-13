@@ -10,22 +10,56 @@
 """
 
 
-def calculate(a, b, operator):
-    if operator == "+":
-        return a + b
+def calculate(a: int, b: int, operator: str) -> int | float | str:
+    # 독립 if
+    # > return이 있기 때문에 if-elif 문이랑 성능 차이는 없음
+    # if operator == "+":
+    #     return a + b
 
-    if operator == "-":
-        return a - b
+    # if operator == "-":
+    #     return a - b
 
-    if operator == "*":
-        return a * b
+    # if operator == "*":
+    #     return a * b
 
-    if operator == "/":
-        if b == 0:
-            return "0으로 나눌 수 없습니다."
-        return a / b
+    # if operator == "/":
+    #     if b == 0:
+    #         return "0으로 나눌 수 없습니다."
+    #     return a / b
 
-    return "지원하지 않는 연산자입니다."
+    # return "지원하지 않는 연산자입니다."
+
+    # if-elif 방식
+    # if operator == "+":
+    #     return a + b
+
+    # elif operator == "-":
+    #     return a - b
+
+    # elif operator == "*":
+    #     return a * b
+
+    # elif operator == "/":
+    #     if b == 0:
+    #         return "0으로 나눌 수 없습니다."
+    #     return a / b
+
+    # return "지원하지 않는 연산자입니다."
+
+    # 수정: 요즘 스타일의 모던 파이썬 분기 처리 알고리즘
+    match operator:
+        case "+":
+            return a + b
+        case "-":
+            return a - b
+        case "*":
+            return a * b
+        case "/":
+            if b == 0:
+                return "0으로 나눌 수 없습니다."
+            return a / b
+        case _: # 모든 조건에 해당하지 않을 때 (if문의 else 역할)
+            return "지원하지 않는 연산자입니다."
 
 
 print("계산 함수 테스트")

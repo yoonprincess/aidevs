@@ -9,7 +9,26 @@ LLM API에서 응답을 받을 때도 비슷한 구조를 만나게 됩니다.
 필요한 값을 하나씩 꺼내 봅니다.
 """
 
-api_response = {
+from typing import TypedDict
+
+# 1. 가장 안쪽의 세부 구조부터 정의합니다.
+class UserInfo(TypedDict):
+    name: str
+    role: str
+
+class DataItem(TypedDict):
+    id: int
+    user: UserInfo  # 위에서 정의한 딕셔너리 구조 대입
+    message: str
+    tags: list[str]
+
+# 2. 전체 API 응답 구조를 정의합니다.
+class ApiResponse(TypedDict):
+    status: str
+    count: int
+    data: list[DataItem]  # DataItem 딕셔너리의 리스트
+
+api_response : ApiResponse = {
     "status": "success",
     "count": 2,
     "data": [
@@ -46,7 +65,8 @@ for message in messages:
     print("작성자:", user_name)
     print("역할:", user_role)
     print("내용:", text)
-    print("태그:", ", ".join(tags))
+    # print("태그:", ", ".join(tags))
+    print(f"태그: {len(tags)}개({', '.join(tags)})")
     print("-" * 20)
 
 print("중첩 자료구조에서는 바깥에서 안쪽으로 한 단계씩 접근합니다.")
